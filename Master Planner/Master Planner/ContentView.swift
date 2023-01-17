@@ -24,6 +24,7 @@ class TodoList: ObservableObject {
 struct ContentView: View {
     
     @ObservedObject var todoList: TodoList
+    @State var showingAddTodo = false
     
     var body: some View {
         
@@ -46,11 +47,14 @@ struct ContentView: View {
             .navigationBarTitle("Todo List")
             .navigationBarItems(trailing:
                 Button(action: {
-                    // add new todo
+                    self.showingAddTodo.toggle()
                 }) {
                     Image(systemName: "plus")
                 }
             )
+            .sheet(isPresented: $showingAddTodo) {
+                AddTodoView(todoList: self.todoList)
+            }
         }
     }
     
