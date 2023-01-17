@@ -89,3 +89,29 @@ struct ContentView_Previews: PreviewProvider {
         ContentView(todoList: TodoList.init())
     }
 }
+
+
+// Add TO DO View
+struct AddTodoView: View {
+    @ObservedObject var todoList: TodoList
+    @State private var task = ""
+    @State private var deadline = Date()
+    @State private var comments = ""
+
+    var body: some View {
+        Form {
+            TextField("Task", text: $task)
+            DatePicker("Deadline", selection: $deadline, in: Date()...)
+            TextField("Comments", text: $comments)
+            
+            Button("Add Todo") {
+                let newTodo = Todo(task: self.task, deadline: self.deadline, comments: self.comments)
+                self.todoList.todos.append(newTodo)
+                self.task = ""
+                self.comments = ""
+                self.deadline = Date()
+            }
+        }
+        .navigationBarTitle("Add Todo")
+    }
+}
