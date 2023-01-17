@@ -23,7 +23,7 @@ class TodoList: ObservableObject {
 
 struct ContentView: View {
     
-    @EnvironmentObject var todoList: TodoList
+    @ObservedObject var todoList: TodoList
     
     var body: some View {
         
@@ -82,7 +82,10 @@ struct TodoDetailView: View {
 
 //
 struct ContentView_Previews: PreviewProvider {
+    
+    @ObservedObject var todoList: TodoList
+    
     static var previews: some View {
-        ContentView()
+        ContentView(todoList: TodoList.init())
     }
 }

@@ -12,7 +12,7 @@ struct Master_PlannerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(todoList: TodoList.init())
         }
     }
 }
