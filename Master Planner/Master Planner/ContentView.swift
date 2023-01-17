@@ -33,7 +33,11 @@ struct ContentView: View {
     func deleteTask(at offsets: IndexSet) {
             tasks.remove(atOffsets: offsets)
         }
-}
+    
+    func moveTask(from source: IndexSet, to destination: Int) {
+            tasks.move(fromOffsets: source, toOffset: destination)
+        }
+    }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
