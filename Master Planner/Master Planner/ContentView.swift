@@ -45,6 +45,17 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
+struct AddTaskView: View {
+    @Binding var tasks: [Task]
+    @State private var taskName = ""
+    @State private var taskDeadline = Date()
+    @State private var showingDatePicker = false
+    
+    var body: some View {
+        
+        Text("Add Task View")
+        
+    }
+}
 
 
