@@ -6,7 +6,14 @@
 //
 
 import SwiftUI
-import UserNotifications
+
+// Model to hold the Todo data
+struct Todo: Identifiable {
+    let id = UUID()
+    var task: String
+    var deadline: Date
+    var comments: String
+}
 
 
 struct ContentView: View {
