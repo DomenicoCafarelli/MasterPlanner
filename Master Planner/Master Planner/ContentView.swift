@@ -121,16 +121,23 @@ struct AddTodoView: View {
 
     var body: some View {
         Form {
-            TextField("Task", text: $task)
+            TextField("Task name", text: $task)
             DatePicker("Deadline", selection: $deadline, in: Date()...)
             TextField("Comments", text: $comments)
             
-            Button("Add Todo") {
-                let newTodo = Todo(task: self.task, deadline: self.deadline, comments: self.comments)
-                self.todoList.todos.append(newTodo)
-                self.task = ""
-                self.comments = ""
-                self.deadline = Date()
+            Button("Save task") {
+                
+                if task != ""{
+                    print("ok")
+                    let newTodo = Todo(task: self.task, deadline: self.deadline, comments: self.comments)
+                    self.todoList.todos.append(newTodo)
+                    self.task = ""
+                    self.comments = ""
+                    self.deadline = Date()
+                   
+                }else{
+                    print("nonono")
+                }
             }
         }
         .navigationBarTitle("Add Todo")
