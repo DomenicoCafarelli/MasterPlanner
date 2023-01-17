@@ -16,6 +16,10 @@ struct Task: Identifiable {
 }
 
 struct ContentView: View {
+    
+    @State private var tasks = [Task]()
+       @State private var showAddTask = false
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -25,6 +29,10 @@ struct ContentView: View {
         }
         .padding()
     }
+    
+    func deleteTask(at offsets: IndexSet) {
+            tasks.remove(atOffsets: offsets)
+        }
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -32,5 +40,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
 
 
