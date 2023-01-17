@@ -8,18 +8,8 @@
 import SwiftUI
 import UserNotifications
 
-struct Task: Identifiable {
-    let id = UUID()
-    let name: String
-    let deadline: Date
-    var isCompleted: Bool = false
-}
 
 struct ContentView: View {
-    
-    @State private var tasks = [Task]()
-       @State private var showAddTask = false
-    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -29,33 +19,10 @@ struct ContentView: View {
         }
         .padding()
     }
-    
-    func deleteTask(at offsets: IndexSet) {
-            tasks.remove(atOffsets: offsets)
-        }
-    
-    func moveTask(from source: IndexSet, to destination: Int) {
-            tasks.move(fromOffsets: source, toOffset: destination)
-        }
-    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
-
-struct AddTaskView: View {
-    @Binding var tasks: [Task]
-    @State private var taskName = ""
-    @State private var taskDeadline = Date()
-    @State private var showingDatePicker = false
-    
-    var body: some View {
-        
-        Text("Add Task View")
-        
-    }
-}
-
-
