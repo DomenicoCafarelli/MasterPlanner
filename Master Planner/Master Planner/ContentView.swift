@@ -119,6 +119,8 @@ struct AddTodoView: View {
     @State private var deadline = Date()
     @State private var comments = ""
 
+    @State private var showingAlert = false
+    
     var body: some View {
         Form {
             TextField("Task name", text: $task)
@@ -127,8 +129,11 @@ struct AddTodoView: View {
             
             Button("Save task") {
                 
+                //statement to control if the user insert a name for the task that is mandatory
                 if task != ""{
-                    print("ok")
+                    
+                    //if the user insert the name, continue with the saving function
+                    
                     let newTodo = Todo(task: self.task, deadline: self.deadline, comments: self.comments)
                     self.todoList.todos.append(newTodo)
                     self.task = ""
@@ -136,8 +141,13 @@ struct AddTodoView: View {
                     self.deadline = Date()
                    
                 }else{
-                    print("nonono")
+                    //if the user DON'T insert the name, show the error message
+                    
+                    showingAlert = true
+                    
                 }
+            }.alert("Task Name is mandatory", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
             }
         }
         .navigationBarTitle("Add Todo")
