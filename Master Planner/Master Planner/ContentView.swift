@@ -15,6 +15,11 @@ struct Todo: Identifiable {
     var comments: String
 }
 
+// State to hold the Todo data
+class TodoList: ObservableObject {
+    @Published var todos: [Todo] = []
+}
+
 
 struct ContentView: View {
     var body: some View {
