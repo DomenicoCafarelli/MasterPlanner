@@ -12,11 +12,11 @@ struct AddTodoView: View {
     // Observed object for the todo list
     @ObservedObject var todoList: TodoList
     // State variable to hold the task name
-    @State private var task = ""
+    @State private var taskName = ""
     // State variable to hold the deadline date
-    @State private var deadline = Date()
+    @State private var taskDeadline = Date()
     // State variable to hold the comments
-    @State private var comments = ""
+    @State private var taskComment = ""
     
     // State variable to control the display of the alert
     @State private var showingAlert = false
@@ -25,24 +25,24 @@ struct AddTodoView: View {
     var body: some View {
         Form {
             // Text field for the task name
-            TextField("Task name", text: $task)
+            TextField("Task name", text: $taskName)
             // Date picker for the deadline
-            DatePicker("Deadline", selection: $deadline, in: Date()...)
+            DatePicker("Deadline", selection: $taskDeadline, in: Date()...)
             // Text field for the comments
-            TextField("Comments", text: $comments)
+            TextField("Comments", text: $taskComment)
             
             // Save button
             Button("Save task") {
                 
                 // Check if the task name is not empty
-                if task != ""{
+                if taskName != ""{
                     
                     // If the task name is not empty, continue with the saving function
-                    let newTodo = Todo(task: self.task, deadline: self.deadline, comments: self.comments)
+                    let newTodo = Todo(task: self.taskName, deadline: self.taskDeadline, comments: self.taskComment)
                     self.todoList.todos.append(newTodo)
-                    self.task = ""
-                    self.comments = ""
-                    self.deadline = Date()
+                    self.taskName = ""
+                    self.taskComment = ""
+                    self.taskDeadline = Date()
                 }else{
                     // If the task name is empty, show an alert
                     showingAlert = true
