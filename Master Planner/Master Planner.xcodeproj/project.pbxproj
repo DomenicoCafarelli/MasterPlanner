@@ -15,6 +15,10 @@
 		C05EFE452976BD4A008F1307 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05EFE442976BD4A008F1307 /* ContentView.swift */; };
 		C05EFE472976BD4B008F1307 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05EFE462976BD4B008F1307 /* Assets.xcassets */; };
 		C05EFE4A2976BD4B008F1307 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C05EFE492976BD4B008F1307 /* Preview Assets.xcassets */; };
+		C0AA2C572981C8B30099CED5 /* MasterPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0AA2C552981C8B30099CED5 /* MasterPlanner.xcdatamodeld */; };
+		C0AA2C5E2981C9D50099CED5 /* ToDoTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA2C5D2981C9D50099CED5 /* ToDoTaskController.swift */; };
+		C0AA2C622981CB7D0099CED5 /* ToDoTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA2C602981CB7D0099CED5 /* ToDoTask+CoreDataClass.swift */; };
+		C0AA2C632981CB7D0099CED5 /* ToDoTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AA2C612981CB7D0099CED5 /* ToDoTask+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		C05EFE442976BD4A008F1307 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C05EFE462976BD4B008F1307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C05EFE492976BD4B008F1307 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0AA2C562981C8B30099CED5 /* MasterPlanner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MasterPlanner.xcdatamodel; sourceTree = "<group>"; };
+		C0AA2C5D2981C9D50099CED5 /* ToDoTaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTaskController.swift; sourceTree = "<group>"; };
+		C0AA2C602981CB7D0099CED5 /* ToDoTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoTask+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C0AA2C612981CB7D0099CED5 /* ToDoTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToDoTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +93,8 @@
 		C05EFE412976BD4A008F1307 /* Master Planner */ = {
 			isa = PBXGroup;
 			children = (
+				C0AA2C5F2981C9EB0099CED5 /* DB */,
+				C0AA2C5C2981C9C80099CED5 /* Controllers */,
 				C011773B29783BBB003CDEF7 /* ViewModels */,
 				C011773A29783BB5003CDEF7 /* Views */,
 				C011773929783BA9003CDEF7 /* Models */,
@@ -101,6 +111,24 @@
 				C05EFE492976BD4B008F1307 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C0AA2C5C2981C9C80099CED5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA2C5D2981C9D50099CED5 /* ToDoTaskController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C0AA2C5F2981C9EB0099CED5 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				C0AA2C602981CB7D0099CED5 /* ToDoTask+CoreDataClass.swift */,
+				C0AA2C612981CB7D0099CED5 /* ToDoTask+CoreDataProperties.swift */,
+				C0AA2C552981C8B30099CED5 /* MasterPlanner.xcdatamodeld */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +205,11 @@
 				C011773F29783BFA003CDEF7 /* TodoViewModel.swift in Sources */,
 				C011774329783F21003CDEF7 /* AddTodoView.swift in Sources */,
 				C011773D29783BCC003CDEF7 /* TodoModel.swift in Sources */,
+				C0AA2C572981C8B30099CED5 /* MasterPlanner.xcdatamodeld in Sources */,
 				C05EFE452976BD4A008F1307 /* ContentView.swift in Sources */,
+				C0AA2C5E2981C9D50099CED5 /* ToDoTaskController.swift in Sources */,
+				C0AA2C622981CB7D0099CED5 /* ToDoTask+CoreDataClass.swift in Sources */,
+				C0AA2C632981CB7D0099CED5 /* ToDoTask+CoreDataProperties.swift in Sources */,
 				C05EFE432976BD4A008F1307 /* Master_PlannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +413,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C0AA2C552981C8B30099CED5 /* MasterPlanner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C0AA2C562981C8B30099CED5 /* MasterPlanner.xcdatamodel */,
+			);
+			currentVersion = C0AA2C562981C8B30099CED5 /* MasterPlanner.xcdatamodel */;
+			path = MasterPlanner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C05EFE372976BD4A008F1307 /* Project object */;
 }

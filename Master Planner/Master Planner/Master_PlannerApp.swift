@@ -10,9 +10,11 @@ import SwiftUI
 @main
 struct Master_PlannerApp: App {
     
+    @StateObject var toDoTaskController = ToDoTaskController.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(todoList: TodoList.init())
+            ContentView(todoList: TodoList.init()).environmentObject(toDoTaskController)
         }
     }
 }
