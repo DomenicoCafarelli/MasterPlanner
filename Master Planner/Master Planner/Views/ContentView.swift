@@ -8,45 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     // The observed object for the todo list
     @ObservedObject var todoList: TodoList
-    // The state variable for showing the add todo view
-    @State var showingAddTodo = false
     
+    // The state variable for showing the add todo view
+    @State var tasks: [ToDoTask] = []
+    @State var showingAddTodo = false
     var body: some View {
         
         NavigationView {
-            List {
-                // For each todo, create a navigation link to the todo detail view
-                ForEach(todoList.todos) { todo in
-                    NavigationLink(destination: TodoDetailView(todo: todo)) {
+            
+            VStack{
+                
+                List {
+                    
+                    // For each todo, create a navigation link to the todo detail view
+                    ForEach(tasks) { todo in
+                        
                         VStack(alignment: .leading) {
-                            // Display the task name
-                            Text(todo.task)
+                            
+                            Text(todo.taskName ?? "Not found")
                                 .font(.headline)
-                            // Display the deadline date
-                            Text("Deadline: \(todo.deadline, formatter: Self.dateFormatter)")
-                                .font(.subheadline)
                         }
                     }
+                    
+                    // Add the ability to delete todos
+                    .onDelete { indexSet in
+                        self.todoList.todos.remove(atOffsets: indexSet)
+                        ToDoTaskController.shared.deleteTask(user: (ToDoTaskController.shared.fetchTask()?.first)!)
+                        tasks = ToDoTaskController.shared.fetchTask()!
+                    }
                 }
-                // Add the ability to delete todos
-                .onDelete { indexSet in
-                    self.todoList.todos.remove(atOffsets: indexSet)
+                .navigationBarTitle("Todo List")
+                // Add a button to the navigation bar to open the add todo view
+                .navigationBarItems(trailing:
+                                        Button(action: {
+                    self.showingAddTodo.toggle()
+                }) {
+                    Image(systemName: "plus")
                 }
-            }
-            .navigationBarTitle("Todo List")
-            // Add a button to the navigation bar to open the add todo view
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                self.showingAddTodo.toggle()
-            }) {
-                Image(systemName: "plus")
-            }
-            )
-            // Show the add todo view as a sheet when the button is tapped
-            .sheet(isPresented: $showingAddTodo) {
-                AddTodoView(todoList: self.todoList)
+                )
+                // Show the add todo view as a sheet when the button is tapped
+                .sheet(isPresented: $showingAddTodo,onDismiss: {
+                    tasks = ToDoTaskController.shared.fetchTask()!
+                }) {
+                    AddTodoView(todoList: self.todoList, showingAddToDo: $showingAddTodo)
+                }
+            }.onAppear {
+                tasks = ToDoTaskController.shared.fetchTask()!
             }
         }
     }

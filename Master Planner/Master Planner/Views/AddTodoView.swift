@@ -20,6 +20,8 @@ struct AddTodoView: View {
     
     // State variable to control the display of the alert
     @State private var showingAlert = false
+    
+    @Binding var showingAddToDo: Bool
 
     
     var body: some View {
@@ -37,14 +39,9 @@ struct AddTodoView: View {
                 // Check if the task name is not empty
                 if taskName != ""{
                     
-                    ToDoTaskController.shared.createTask(id: UUID(), taskName: "prova", taskDeadline: taskDeadline, taskComment: "commento")
+                    ToDoTaskController.shared.createTask(id: UUID(), taskName: taskName, taskDeadline: taskDeadline, taskComment: taskComment)!
+                    showingAddToDo.toggle()
                     
-                    // If the task name is not empty, continue with the saving function
-//                    let newTodo = Todo(task: self.taskName, deadline: self.taskDeadline, comments: self.taskComment)
-//                    self.todoList.todos.append(newTodo)
-//                    self.taskName = ""
-//                    self.taskComment = ""
-//                    self.taskDeadline = Date()
                 }else{
                     // If the task name is empty, show an alert
                     showingAlert = true

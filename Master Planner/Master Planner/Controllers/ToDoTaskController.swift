@@ -53,7 +53,7 @@ class ToDoTaskController: ObservableObject {
             save()
         }
     
-        func deleteUser(user: ToDoTask) {
+        func deleteTask(user: ToDoTask) {
             context.delete(user)
             save()
         }
